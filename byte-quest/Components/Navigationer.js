@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ExploreScreen from '../Screens/ExploreScreen.js';
-import { Text } from 'react-native';
-
+import { Text } from 'react-native'; 
+import StackScreen from '../Screens/ActiveStack.js'
 
 const Tab = createBottomTabNavigator();
 
