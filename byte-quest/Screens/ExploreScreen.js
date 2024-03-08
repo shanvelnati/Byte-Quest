@@ -21,7 +21,7 @@ export const CourseCard = ({ course, onPress }) => (
   </TouchableOpacity>
 );
 
-export const handleCoursePress = (course) => {
+const handleCoursePress = (course) => {
   // Handle course press navigation
   console.log(`Navigating to course: ${course.name}`);
 };

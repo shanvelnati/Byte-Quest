@@ -34,10 +34,10 @@ const Navigationer = () => {
         }}
       />
       <Tab.Screen
-        name="My Course"
+        name="My Courses"
         component={HomeScreen}
         options={{
-          tabBarLabel: 'My Course',
+          tabBarLabel: 'My Courses',
           tabBarIcon: () => (
             <Text style={{ fontSize: 20, marginBottom: -3 }}>📚</Text>
           ),
