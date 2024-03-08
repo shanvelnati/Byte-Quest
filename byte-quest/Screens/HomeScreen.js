@@ -1,42 +1,34 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import {CourseCard, styles} from './ExploreScreen';
+import StackPic from '/Users/sb4sp/Desktop/Spring 24/CS 4261:8803/Byte-Quest/byte-quest/StackPic.png';
+import QueuePic from '/Users/sb4sp/Desktop/Spring 24/CS 4261:8803/Byte-Quest/byte-quest/QueuePic.png';
+import LinkedListPic from '/Users/sb4sp/Desktop/Spring 24/CS 4261:8803/Byte-Quest/byte-quest/LinkedListPic.png';
 
 const courses = [
-  { id: '1', title: 'Course 1' },
-  { id: '2', title: 'Course 2' },
+  { id: '1', name: 'Stacks', image: StackPic},
+  {id: '2', name: "Queues", image: QueuePic},
+  {id: '3', name: "Linked Lists", image: LinkedListPic }
   // Add more courses as needed
 ];
+const handleCoursePress = (course) => {
+  // Handle course press navigation
+  console.log(`Navigating to course: ${course.name}`);
+};
+const HomeScreen = () => {
 
-function CourseCard({ title }) {
   return (
-    <View style={styles.card}>
-      <Text>{title}</Text>
+    <View style={styles.container}>
+      <FlatList
+        data={courses}
+        renderItem={({ item }) => (
+          <CourseCard course={item} onPress={() => handleCoursePress(item)} />
+        )}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContent}
+      />
     </View>
   );
-}
-
-function HomeScreen() {
-  return (
-    <FlatList
-      data={courses}
-      renderItem={({ item }) => <CourseCard title={item.title} />}
-      keyExtractor={item => item.id}
-    />
-  );
-}
-
-const styles = StyleSheet.create({
-  card: {
-    margin: 10,
-    padding: 20,
-    backgroundColor: '#fff',
-    // Add more styling as needed
-    borderRadius: 5,
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    shadowColor: '#000',
-    shadowOffset: { height: 0, width: 0 },
-  },
-});
+};
 
 export default HomeScreen;
