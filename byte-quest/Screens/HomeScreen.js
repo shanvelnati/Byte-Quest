@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import {CourseCard, styles} from './ExploreScreen';
-import StackPic from '/Users/sb4sp/Desktop/Spring 24/CS 4261:8803/Byte-Quest/byte-quest/StackPic.png';
-import QueuePic from '/Users/sb4sp/Desktop/Spring 24/CS 4261:8803/Byte-Quest/byte-quest/QueuePic.png';
-import LinkedListPic from '/Users/sb4sp/Desktop/Spring 24/CS 4261:8803/Byte-Quest/byte-quest/LinkedListPic.png';
+import StackPic from '../assets/StackPic.png';
+import QueuePic from '../assets/QueuePic.png';
+import LinkedListPic from '../assets/LinkedListPic.png';
 
 const courses = [
   { id: '1', name: 'Stacks', image: StackPic},
