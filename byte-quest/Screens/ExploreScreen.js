@@ -11,7 +11,7 @@ const courses = [
   // Add more courses as needed
 ];
 
-const CourseCard = ({ course, onPress }) => (
+export const CourseCard = ({ course, onPress }) => (
   <TouchableOpacity style={styles.card} onPress={onPress}>
     <Image source={course.image} style={styles.cardImage} />
     <View style={styles.cardContent}>
@@ -21,11 +21,11 @@ const CourseCard = ({ course, onPress }) => (
   </TouchableOpacity>
 );
 
+const handleCoursePress = (course) => {
+  // Handle course press navigation
+  console.log(`Navigating to course: ${course.name}`);
+};
 const ExploreScreen = () => {
-  const handleCoursePress = (course) => {
-    // Handle course press navigation
-    console.log(`Navigating to course: ${course.name}`);
-  };
 
   return (
     <View style={styles.container}>
@@ -41,7 +41,7 @@ const ExploreScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',

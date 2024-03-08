@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ExploreScreen from '../Screens/ExploreScreen.js';
 import { Text } from 'react-native'; 
 import StackScreen from '../Screens/ActiveStack.js'
+import HomeScreen from '../Screens/HomeScreen.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,10 +34,10 @@ const Navigationer = () => {
         }}
       />
       <Tab.Screen
-        name="My Course"
-        component={ExploreScreen}
+        name="My Courses"
+        component={HomeScreen}
         options={{
-          tabBarLabel: 'My Course',
+          tabBarLabel: 'My Courses',
           tabBarIcon: () => (
             <Text style={{ fontSize: 20, marginBottom: -3 }}>📚</Text>
           ),
