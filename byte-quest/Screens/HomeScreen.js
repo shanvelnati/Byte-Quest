@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import {CourseCard, styles} from './ExploreScreen';
 import StackPic from '../assets/StackPic.png';
 import QueuePic from '../assets/QueuePic.png';
@@ -11,11 +12,17 @@ const courses = [
   {id: '3', name: "Linked Lists", image: LinkedListPic }
   // Add more courses as needed
 ];
-const handleCoursePress = (course) => {
-  // Handle course press navigation
-  console.log(`Navigating to course: ${course.name}`);
-};
-const HomeScreen = () => {
+
+const HomeScreen = () => { 
+  const navigation = useNavigation();
+
+  const handleCoursePress = (course) => {
+    if (course.name === 'Stacks') {
+      navigation.navigate('Stacks');
+    } else {
+      console.log(`Navigating to course: ${course.name}`);
+    }
+  };
 
   return (
     <View style={styles.container}>

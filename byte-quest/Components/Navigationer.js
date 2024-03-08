@@ -1,11 +1,24 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import ExploreScreen from '../Screens/ExploreScreen.js';
 import { Text } from 'react-native'; 
 import StackScreen from '../Screens/ActiveStack.js'
 import HomeScreen from '../Screens/HomeScreen.js';
 
+
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+const HomeStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="My Courses" component={HomeScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Stacks" component={StackScreen} options={{ headerShown: false }} />
+    </Stack.Navigator>
+  );
+};
 
 const Navigationer = () => {
   return (
@@ -17,7 +30,7 @@ const Navigationer = () => {
           backgroundColor: '#bbb',
           position: 'absolute',
           bottom: 0,
-          left: 0,
+          left: 0, 
           right: 0,
           elevation: 0,
         },
@@ -35,7 +48,7 @@ const Navigationer = () => {
       />
       <Tab.Screen
         name="My Courses"
-        component={HomeScreen}
+        component={HomeStack}
         options={{
           tabBarLabel: 'My Courses',
           tabBarIcon: () => (
