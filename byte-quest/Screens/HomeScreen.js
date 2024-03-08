@@ -1,41 +1,76 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import ExploreScreen from './ExploreScreen';
+import StackPic from '/Users/sb4sp/Desktop/Spring 24/CS 4261:8803/Byte-Quest/byte-quest/StackPic.png';
 
 const courses = [
-  { id: '1', title: 'Course 1' },
-  { id: '2', title: 'Course 2' },
+  { id: '1', name: 'Stacks', image: StackPic},
+  
   // Add more courses as needed
 ];
 
-function CourseCard({ title }) {
+const CourseCard = ({ course, onPress }) => (
+  <TouchableOpacity style={styles.card} onPress={onPress}>
+    <Image source={course.image} style={styles.cardImage} />
+    <View style={styles.cardContent}>
+      <Text style={styles.cardTitle}>{course.name}</Text>
+      <Text style={styles.cardArrow}>&#8250;</Text>
+    </View>
+  </TouchableOpacity>
+);
+
+const HomeScreen = () => {
+  const handleCoursePress = (course) => {
+    // Handle course press navigation
+    console.log(`Navigating to course: ${course.name}`);
+    component={ExploreScreen}
+  };
+
   return (
-    <View style={styles.card}>
-      <Text>{title}</Text>
+    <View style={styles.container}>
+      <FlatList
+        data={courses}
+        renderItem={({ item }) => (
+          <CourseCard course={item} onPress={() => handleCoursePress(item)} />
+        )}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContent}
+      />
     </View>
   );
-}
-
-function HomeScreen() {
-  return (
-    <FlatList
-      data={courses}
-      renderItem={({ item }) => <CourseCard title={item.title} />}
-      keyExtractor={item => item.id}
-    />
-  );
-}
+};
 
 const styles = StyleSheet.create({
-  card: {
-    margin: 10,
-    padding: 20,
+  container: {
+    flex: 1,
     backgroundColor: '#fff',
-    // Add more styling as needed
-    borderRadius: 5,
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    shadowColor: '#000',
-    shadowOffset: { height: 0, width: 0 },
+  },
+  listContent: {
+    padding: 16,
+  },
+  card: {
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
+    marginBottom: 16,
+    overflow: 'hidden',
+  },
+  cardImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+  },
+  cardContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+  },
+  cardTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  cardArrow: {
+    fontSize: 24,
   },
 });
 

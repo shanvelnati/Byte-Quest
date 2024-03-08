@@ -2,6 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ExploreScreen from '../Screens/ExploreScreen.js';
 import { Text } from 'react-native';
+import HomeScreen from '../Screens/HomeScreen.js';
 
 
 const Tab = createBottomTabNavigator();
@@ -34,7 +35,7 @@ const Navigationer = () => {
       />
       <Tab.Screen
         name="My Course"
-        component={ExploreScreen}
+        component={HomeScreen}
         options={{
           tabBarLabel: 'My Course',
           tabBarIcon: () => (
