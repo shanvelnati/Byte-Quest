@@ -6,6 +6,11 @@ import ExploreScreen from '../Screens/ExploreScreen.js';
 import { Text } from 'react-native'; 
 import StackScreen from '../Screens/ActiveStack.js'
 import HomeScreen from '../Screens/HomeScreen.js';
+import ProfileScreen from '../Screens/ProfileScreen.js';
+
+
+import AuthStack from '../Screens/AuthStack';
+import { useAuth } from '../hooks/useAuth';
 
 
 const Tab = createBottomTabNavigator();
@@ -14,14 +19,16 @@ const Stack = createNativeStackNavigator();
 const HomeStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="My Courses" component={HomeScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Courses" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Stacks" component={StackScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };
 
 const Navigationer = () => {
-  return (
+
+  const { user } = useAuth();
+  return user ? (
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
@@ -58,15 +65,14 @@ const Navigationer = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ExploreScreen}
+        component={ProfileScreen}
         options={{
           tabBarLabel: 'Profile',
-          tabBarIcon: () => (
-            <Text style={{ fontSize: 20, marginBottom: -3 }}>👤</Text>
-          ),
+          tabBarIcon: () => <Text style={{ fontSize: 20, marginBottom: -3 }}>👤</Text>,
         }}
       />
-    </Tab.Navigator>
+    </Tab.Navigator> ) : (
+    <AuthStack />
   );
 };
 
