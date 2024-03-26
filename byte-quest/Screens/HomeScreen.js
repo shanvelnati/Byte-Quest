@@ -19,6 +19,8 @@ const HomeScreen = () => {
   const handleCoursePress = (course) => {
     if (course.name === 'Stacks') {
       navigation.navigate('Stacks');
+    } else if (course.name === 'Queues') {
+      navigation.navigate('Queues');
     } else {
       console.log(`Navigating to course: ${course.name}`);
     }

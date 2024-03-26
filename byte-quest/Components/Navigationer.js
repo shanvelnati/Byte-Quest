@@ -4,8 +4,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import ExploreScreen from '../Screens/ExploreScreen.js';
 import { Text } from 'react-native'; 
-import StackScreen from '../Screens/ActiveStack.js'
+import StackDesc from '../Screens/StackDescription.js';
+import StackScreen from '../Screens/ActiveStack.js';
 import HomeScreen from '../Screens/HomeScreen.js';
+import QueueDesc from '../Screens/QueueDescription.js'
 
 
 const Tab = createBottomTabNavigator();
@@ -15,7 +17,9 @@ const HomeStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="My Courses" component={HomeScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Stacks" component={StackScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Stacks" component={StackDesc} options={{ headerShown: false }} />
+      <Stack.Screen name="PlayStack" component={StackScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Queues" component={QueueDesc} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };
