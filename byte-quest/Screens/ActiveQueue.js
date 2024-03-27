@@ -17,7 +17,7 @@ const QueueScreen = () => {
                 id: items.length + 1,
                 value: text
             };
-            setItems([newItem, ...items])
+            setItems([...items, newItem])
             setItem('');
             console.log(items);
         } 
@@ -26,7 +26,7 @@ const QueueScreen = () => {
     const dequeueItem = () => {
         if (items.length > 0) {
             const newItems = [...items];
-            newItems.pop();
+            newItems.shift();
             setItems(newItems);
         }
         console.log(items)
@@ -39,16 +39,17 @@ const QueueScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Welcome to your Interactive Queue!</Text>
-            <Text style={styles.subtitle}>Front of the Queue</Text>
+            <Text style={styles.subtitle}>Front of the Queue is on the Left</Text>
             <FlatList
+                horizontal = {true}
                 style = {styles.queue}
-                data = {[...items].reverse()}
+                data = {[...items]}
                 renderItem = {({ item }) => (
                     <QueueItem item={item}/>
                 )}
                 keyExtractor={(item) => item.id}
             />
-            <Text style={styles.subtitle}>Back of the Queue</Text>
+            <Text style={[styles.subtitle, {textAlign: 'right'}]}>Back of the Queue is on the Right</Text>
             <TextInput style = {styles.input} placeholder='Data for stack here!' onChangeText={(textVal) => {setItem(textVal)}}/>
             <View style={styles.buttonContainer}>
                 <Pressable style={[styles.button, {backgroundColor: "lightgreen"}]} onPress={() => enqueueItem(item)}>
@@ -65,6 +66,11 @@ const QueueScreen = () => {
         </SafeAreaView>
     );
 };
+const VerticalText = props => {
+    <View style={{ flex: 1, flexDirection: 'column' }}>
+        {props.string.split('').map(char => <Text>{char}</Text>)}
+    </View>
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -76,7 +82,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 20,
         fontStyle: 'normal',
-        padding: 15
+        padding: 15,
+        flexDirection:'column'
     },
     subtitle: {
         fontSize: 14,
@@ -84,17 +91,22 @@ const styles = StyleSheet.create({
         padding: 7
     },
     queue: {
-        width: 225,
-        flexDirection: 'column-reverse',
+        width: 350,
+        flexDirection: "row",
+        flexGrow: 0,
+        height: 120,
         backgroundColor: 'powderblue',
-        paddingVertical: 15,
+        paddingVertical: 30,
         paddingHorizontal: 6,
         borderRadius: 5,
         borderWidth: 1
     },
     queueItem: {
         alignItems: 'center',
-        padding: 10,
+        height: 60,
+        width: 80,
+        textAlign: "center",
+        paddingVertical: 20,
         borderWidth: 1,
         borderRadius: 5,
         margin: 1,
@@ -106,7 +118,9 @@ const styles = StyleSheet.create({
         padding: 10,
         borderWidth: 1,
         width: 300,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        alignContent: 'center',
+        alignItems: 'center'
     },
     buttonContainer: {
         padding: 15,
