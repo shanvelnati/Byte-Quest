@@ -39,18 +39,18 @@ const QueueScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Welcome to your Interactive Queue!</Text>
-            <Text style={styles.subtitle}>Front of the Queue is on the Left</Text>
+            <Text style={styles.subtitle}>Front of Queue</Text>
             <FlatList
                 horizontal = {true}
-                style = {styles.queue}
+                style = {[styles.queue]}
                 data = {[...items]}
                 renderItem = {({ item }) => (
                     <QueueItem item={item}/>
                 )}
                 keyExtractor={(item) => item.id}
             />
-            <Text style={[styles.subtitle, {textAlign: 'right'}]}>Back of the Queue is on the Right</Text>
-            <TextInput style = {styles.input} placeholder='Data for stack here!' onChangeText={(textVal) => {setItem(textVal)}}/>
+            <Text style={[styles.subtitle, {textAlign: 'right'}]}>Back of Queue</Text>
+            <TextInput style = {styles.input} placeholder='Data for queue here!' onChangeText={(textVal) => {setItem(textVal)}}/>
             <View style={styles.buttonContainer}>
                 <Pressable style={[styles.button, {backgroundColor: "lightgreen"}]} onPress={() => enqueueItem(item)}>
                     <Text style={styles.buttonText}>Enqueue</Text>
@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'aliceblue',
-        alignItems: 'center'
     },
     title: {
         textAlign: 'center',
@@ -91,6 +90,7 @@ const styles = StyleSheet.create({
         padding: 7
     },
     queue: {
+        alignSelf: 'center',
         width: 350,
         flexDirection: "row",
         flexGrow: 0,
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     input: {
+        alignSelf: 'center',
         height: 40,
         margin: 12,
         padding: 10,
@@ -127,7 +128,9 @@ const styles = StyleSheet.create({
         width: 300,
         flexDirection: 'row',
         justifyContent: 'space-around',
-        alignItems: 'center'
+        alignItems: 'center',
+        alignContent: 'center',
+        alignSelf: "center"
     },
     button: {
         alignItems: 'center',
