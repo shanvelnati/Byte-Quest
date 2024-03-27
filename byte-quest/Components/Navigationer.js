@@ -7,7 +7,8 @@ import { Text } from 'react-native';
 import StackDesc from '../Screens/StackDescription.js';
 import StackScreen from '../Screens/ActiveStack.js';
 import HomeScreen from '../Screens/HomeScreen.js';
-import QueueDesc from '../Screens/QueueDescription.js'
+import QueueDesc from '../Screens/QueueDescription.js';
+import QueueScreen from '../Screens/ActiveQueue.js';
 
 
 const Tab = createBottomTabNavigator();
@@ -20,6 +21,7 @@ const HomeStack = () => {
       <Stack.Screen name="Stacks" component={StackDesc} options={{ headerShown: false }} />
       <Stack.Screen name="PlayStack" component={StackScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Queues" component={QueueDesc} options={{ headerShown: false }} />
+      <Stack.Screen name="PlayQueue" component={QueueScreen} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 };

@@ -28,8 +28,7 @@ const QueueDescription = () => {
                 </Text>
             </View>
             <Text style={styles.paragraph}>With this basic understanding of how Queues work, use the button to continue to your own interactive Queue!</Text>
-            {/* Shonjoy put the name of the appropraite thing to navigate to in navigation.navigate */}
-            <Pressable style={styles.button} onPress={() => navigation.navigate("")}>
+            <Pressable style={styles.button} onPress={() => navigation.navigate("PlayQueue")}>
                 <Text style={styles.buttonText}>Continue</Text>
             </Pressable>
         </SafeAreaView>
